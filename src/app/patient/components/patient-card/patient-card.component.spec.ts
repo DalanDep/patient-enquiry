@@ -1,13 +1,15 @@
-import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
-import { Patient, ResourceType, Status, Mode } from '../interfaces/patient.interface';
+import { Patient, ResourceType, Status, Mode, Resource } from '../../interfaces/patient.interface';
 
-import { PatientsService } from './patients.service';
+import { CardModule } from 'primeng/card';
 
-describe('PatientsService', () => {
-    let service: PatientsService;
-    let httpMock: HttpTestingController;
+import { PatientCardComponent } from './patient-card.component';
+
+describe('PatientCardComponent', () => {
+    let component: PatientCardComponent;
+    let fixture: ComponentFixture<PatientCardComponent>;
 
     const mockData: Patient = {
         "resourceType": "Bundle",
@@ -115,29 +117,65 @@ describe('PatientsService', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [HttpClientTestingModule],
-            providers: [PatientsService]
+            declarations: [PatientCardComponent],
+            imports: [
+                RouterTestingModule,
+                CardModule
+            ]
+        }).compileComponents();
+        fixture = TestBed.createComponent(PatientCardComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
+
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
+
+    describe('#ngOnInit', () => {
+        it('should set patient', () => {
+            component.patient = mockData.entry[0].resource;
+            component.ngOnInit();
+            expect(component.patient).toEqual(mockData.entry[0].resource);
         });
-        service = TestBed.inject(PatientsService);
-        httpMock = TestBed.inject(HttpTestingController);
-    });
 
-    // It is run after each test, used to verify that there are no pending requests.
-    afterEach(() => {
-        httpMock.verify();
-    });
-
-    it('should be created', () => {
-        expect(service).toBeTruthy();
-    });
-
-    it(`should return an Observable<Patient>`, () => {
-        service.getPatients().subscribe((data: Patient) => {
-            expect(data).toEqual(mockData);
+        it('should throw an error if there is no patient information', () => {
+            component.patient = undefined;
+            expect(() => {
+                component.ngOnInit();
+            }).toThrowError('Patient information is required');
         });
 
-        const req = httpMock.expectOne(`${service.getBaseUrl}/Patient`);
-        expect(req.request.method).toBe('GET');
-        req.flush(mockData);
+        it('should not throw an error if patient information is present', () => {
+            component.patient = mockData.entry[0].resource;
+            expect(() => {
+                component.ngOnInit();
+            }).not.toThrowError('Patient information is required');
+        });
+    });
+
+    describe('render card', () => { 
+        it('should render card', () => {
+            const cardElement = fixture.nativeElement;
+            expect(cardElement.querySelector('p-card')).toBeTruthy();
+        });
+
+        it('should display the correct data in the card', () => { 
+            component.patient = mockData.entry[0].resource;
+            component.ngOnInit();
+            fixture.detectChanges();
+            
+            const cardGivens = fixture.nativeElement.querySelector('.card-patient-given');
+            expect(cardGivens.textContent).toContain(mockData.entry[0].resource.name[0].given[0]);
+
+            const cardFamily = fixture.nativeElement.querySelector('.card-patient-family');
+            expect(cardFamily.textContent).toContain(mockData.entry[0].resource.name[0].family);
+
+            const cardBirthDate = fixture.nativeElement.querySelector('.card-patient-birthDate');
+            expect(cardBirthDate.textContent).toContain(mockData.entry[0].resource.birthDate);
+
+            const cardGender = fixture.nativeElement.querySelector('.card-patient-gender');
+            expect(cardGender.textContent).toContain(mockData.entry[0].resource.gender);
+        });
     });
 });

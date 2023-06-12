@@ -1,3 +1,30 @@
-<div *ngFor="let patient of patients?.entry">
-    {{patient}}
+<div *ngIf="!patients">
+    <div class="mb-5">
+        <p-card>
+            <p-skeleton styleClass="mb-2"></p-skeleton>
+            <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
+            <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+            <p-skeleton height="2rem" styleClass="mb-2"></p-skeleton>
+            <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
+        </p-card>
+        <p-card>
+            <p-skeleton styleClass="mb-2"></p-skeleton>
+            <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
+            <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+            <p-skeleton height="2rem" styleClass="mb-2"></p-skeleton>
+            <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
+        </p-card>
+        <p-card>
+            <p-skeleton styleClass="mb-2"></p-skeleton>
+            <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
+            <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+            <p-skeleton height="2rem" styleClass="mb-2"></p-skeleton>
+            <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
+        </p-card>
+    </div>
+</div>
+
+<div *ngFor="let patient of patients?.entry" 
+class="info-card mb-5">
+    <app-patient-card [patient]="patient.resource"></app-patient-card>
 </div>
