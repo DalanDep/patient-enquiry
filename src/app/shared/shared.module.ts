@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
+import { ButtonModule } from 'primeng/button';
+import { CommonFunctionsComponent } from './components/common-functions/common-functions.component';
 import { CommonModule } from '@angular/common';
 import { Error404PageComponent } from './pages/error404-page/error404-page.component';
+import { NgModule } from '@angular/core';
 
-import { ButtonModule } from 'primeng/button';
 import { NavegateToComponent } from './components/navegate-to/navegate-to.component';
-import { CommonFunctionsComponent } from './components/common-functions/common-functions.component';
 
 
 @NgModule({

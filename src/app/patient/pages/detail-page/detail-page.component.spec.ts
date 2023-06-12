@@ -1,14 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DatePipe } from '@angular/common';
-import { of } from 'rxjs';
-import { PatientsService } from '../../services/patients.service';
-
-import { NavegateToComponent } from 'src/app/shared/components/navegate-to/navegate-to.component';
 import { ButtonModule } from 'primeng/button';
-import { Resource, ResourceType, Status } from '../../interfaces/patient.interface';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DatePipe } from '@angular/common';
 
 import { DetailPageComponent } from './detail-page.component';
+import { NavegateToComponent } from 'src/app/shared/components/navegate-to/navegate-to.component';
+import { of } from 'rxjs';
+import { PatientsService } from '../../services/patients.service';
+import { Resource, ResourceType, Status } from '../../interfaces/patient.interface';
+
 
 describe('DetailPageComponent', () => {
     let component: DetailPageComponent;

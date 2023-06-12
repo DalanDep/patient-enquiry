@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { DetailPageComponent } from './pages/detail-page/detail-page.component';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 import { ListPageComponent } from './pages/list-page/list-page.component';
-import { DetailPageComponent } from './pages/detail-page/detail-page.component';
 
 const routes: Routes = [
     {

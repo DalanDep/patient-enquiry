@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavegateToComponent } from '../../components/navegate-to/navegate-to.component';
 import { ButtonModule } from 'primeng/button';
+import { NavegateToComponent } from '../../components/navegate-to/navegate-to.component';
 
 import { Error404PageComponent } from './error404-page.component';
 
