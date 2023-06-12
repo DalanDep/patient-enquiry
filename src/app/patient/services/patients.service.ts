@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Patient } from '../interfaces/patient.interface';
+import { Patient, Resource } from '../interfaces/patient.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -19,5 +19,10 @@ export class PatientsService {
 
     getPatients(): Observable<Patient> {
         return this.http.get<Patient>(`${this.baseUrl}/Patient`);
+    }
+
+    // A patient is obtained through an id, it is possible to access directly by entering an id from the browser
+    getPatientById(id: string): Observable<Resource> { 
+        return this.http.get<Resource>(`${this.baseUrl}/Patient/${id}`);
     }
 }
