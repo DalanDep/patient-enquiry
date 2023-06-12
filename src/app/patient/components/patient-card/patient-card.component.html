@@ -1,0 +1,10 @@
+<p-card [routerLink]="['/info', patient?.id]">
+    <div *ngFor="let name of patient?.name">
+        <div *ngFor="let patientName of name.given">
+            <p class="card-patient-given">Nombre: {{patientName}}</p>
+        </div>
+        <p class="card-patient-family">Apellido: {{name.family}}</p>
+    </div>
+    <p class="card-patient-birthDate">Fecha de nacimiento: {{patient?.birthDate}}</p>
+    <p class="card-patient-gender">Género: {{patient?.gender}}</p>
+</p-card>

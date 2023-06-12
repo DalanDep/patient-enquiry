@@ -10,9 +10,12 @@ export class PatientsService {
 
     private readonly baseUrl: string = 'http://hapi.fhir.org/baseR4';
 
-    constructor(
-        private http: HttpClient
-    ) { }
+    constructor( private http: HttpClient) {}
+
+    // Get is done to be able to use baseUrl in unit tests
+    get getBaseUrl(): string {
+        return this.baseUrl;
+    }
 
     getPatients(): Observable<Patient> {
         return this.http.get<Patient>(`${this.baseUrl}/Patient`);
