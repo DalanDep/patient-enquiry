@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Injectable } from '@angular/core';
 
 import { Resource } from '../../../patient/interfaces/patient.interface';
 import { DatePipe } from '@angular/common';
@@ -50,7 +49,7 @@ export class CommonFunctionsComponent {
 
     getBirthDate(patient: Resource): string {
         if (patient && patient.birthDate) {
-            return `${patient.birthDate}`;
+            return `${this.datePipe.transform(patient.birthDate, 'dd/MM/yyyy')}`;
         }
         return 'No data';
     }

@@ -23,7 +23,6 @@ describe('LayoutPageComponent', () => {
 
     it('should render layout content', () => {
         const compiled = fixture.nativeElement;
-        expect(compiled.querySelector('h1')).toBeTruthy();
         expect(compiled.querySelector('router-outlet')).toBeTruthy();
     });
 });

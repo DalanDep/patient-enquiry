@@ -1,6 +1,8 @@
 <p-card *ngIf="patient" [routerLink]="['/patient', patient.id]">
-    <p class="card-patient-given">Name: {{commonFunctions.getPatientName(patient)}}</p>
-    <p class="card-patient-family">Surname: {{commonFunctions.getPatientSurName(patient)}}</p>
-    <p class="card-patient-birthDate">Birth Date: {{commonFunctions.getBirthDate(patient)}}</p>
-    <p class="card-patient-gender">Gender: {{commonFunctions.getGender(patient)}}</p>
+    <div class="patient-data">
+        <p><span>Name:</span> {{commonFunctions.getPatientName(patient)}}</p>
+        <p><span>Surname:</span> {{commonFunctions.getPatientSurName(patient)}}</p>
+        <p><span>Birth Date:</span> {{commonFunctions.getBirthDate(patient)}}</p>
+        <p><span>Gender:</span> {{commonFunctions.getGender(patient)}}</p>
+    </div>
 </p-card>
