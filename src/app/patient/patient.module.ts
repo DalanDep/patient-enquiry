@@ -10,6 +10,7 @@ import { PatientCardComponent } from './components/patient-card/patient-card.com
 
 import { CardModule } from 'primeng/card';
 import { SkeletonModule } from 'primeng/skeleton';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { SkeletonModule } from 'primeng/skeleton';
         CommonModule,
         PatientRoutingModule,
         CardModule,
-        SkeletonModule
+        SkeletonModule,
+        SharedModule
     ]
 })
 export class PatientModule { }

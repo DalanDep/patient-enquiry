@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { Resource } from '../../interfaces/patient.interface';
+import { DatePipe } from '@angular/common';
+import { CommonFunctionsComponent } from 'src/app/shared/components/common-functions/common-functions.component';
 
 @Component({
     selector: 'app-patient-card',
@@ -12,6 +14,13 @@ export class PatientCardComponent implements OnInit {
     @Input()
         // the as Resource is used to prevent the property from being undefined if no value is obtained from the parent, if this happens the value will be empty.
     public patient?: Resource = {} as Resource;
+    public commonFunctions: CommonFunctionsComponent;
+
+    constructor(
+        private datePipe: DatePipe
+    ) {
+        this.commonFunctions = new CommonFunctionsComponent(this.datePipe);
+    }
 
     ngOnInit(): void {
         if (!this.patient) {

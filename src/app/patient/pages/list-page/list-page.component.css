@@ -1,3 +1,15 @@
+h1 {
+    font-size: 80px;
+}
+.container {
+    place-items: center;
+    height: 100vh;
+}
+
+.centered-element {
+    text-align: center;
+}
+
 .info-card {
     cursor: pointer;
 }
