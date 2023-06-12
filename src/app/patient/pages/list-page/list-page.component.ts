@@ -11,10 +11,8 @@ import { Patient } from '../../interfaces/patient.interface';
 export class ListPageComponent implements OnInit {
 
     public patients!: Patient;
-
-    constructor(
-        private patientsService: PatientsService
-    ) {}
+    
+    constructor(private patientsService: PatientsService,) {}
     
     ngOnInit(): void {
         this.patientsService.getPatients().subscribe(

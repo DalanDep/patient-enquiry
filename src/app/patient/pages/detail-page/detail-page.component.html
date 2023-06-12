@@ -1,30 +1,37 @@
-<div *ngIf="patient" class="surface-section">
-    <div class="font-medium text-3xl text-900 mb-3">Patien Id: {{getId()}}</div>
-    <div class="text-500 mb-5">Last Update {{getLastUpdate()}}</div>
-    <ul class="list-none p-0 m-0">
-        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
-            <div class="text-500 w-6 md:w-2 font-medium">Name</div>
-            <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 capitalize-text">{{getPatientName()}}</div>
-        </li>
-        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
-            <div class="text-500 w-6 md:w-2 font-medium">Surname</div>
-            <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 capitalize-text">{{getPatientSurName()}}</div>
-        </li>
-        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
-            <div class="text-500 w-6 md:w-2 font-medium">Birth Date</div>
-            <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 capitalize-text">{{getBirthDate()}}</div>
-        </li>
-        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
-            <div class="text-500 w-6 md:w-2 font-medium">Gender</div>
-            <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 capitalize-text">{{getGender()}}</div>
-        </li>
-        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
-            <div class="text-500 w-6 md:w-2 font-medium">Phone number</div>
-            <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 capitalize-text">{{getPhoneNumber()}}</div>
-        </li>
-        <li class="flex align-items-center py-3 px-2 border-top-1 border-bottom-1 surface-border flex-wrap">
-            <div class="text-500 w-6 md:w-2 font-medium">Address</div>
-            <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 line-height-3" [class.capitalize-text]="getAddress() === 'No data'">{{getAddress()}}</div>
-        </li>
-    </ul>
-</div>
+<section class="container grid">
+    <div class="centered-element col-4 col-offset-4">
+        <div *ngIf="patient" class="surface-section mt-8">
+            <div class="font-medium text-5xl text-900 mb-3">Patien Id: {{this.commonFunctions.getId(patient)}}</div>
+            <div class="text-500 mb-5">Last Update {{commonFunctions.getLastUpdate(patient)}}</div>
+            <ul class="list-none p-0 m-0">
+                <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                    <div class="text-500 w-6 md:w-2 font-medium">Name</div>
+                    <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 capitalize-text">{{commonFunctions.getPatientName(patient)}}</div>
+                </li>
+                <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                    <div class="text-500 w-6 md:w-2 font-medium">Surname</div>
+                    <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 capitalize-text">{{commonFunctions.getPatientSurName(patient)}}
+                    </div>
+                </li>
+                <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                    <div class="text-500 w-6 md:w-2 font-medium">Birth Date</div>
+                    <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 capitalize-text">{{commonFunctions.getBirthDate(patient)}}</div>
+                </li>
+                <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                    <div class="text-500 w-6 md:w-2 font-medium">Gender</div>
+                    <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 capitalize-text">{{commonFunctions.getGender(patient)}}</div>
+                </li>
+                <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+                    <div class="text-500 w-6 md:w-2 font-medium">Phone number</div>
+                    <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 capitalize-text">{{commonFunctions.getPhoneNumber(patient)}}</div>
+                </li>
+                <li class="flex align-items-center py-3 px-2 border-top-1 border-bottom-1 surface-border flex-wrap">
+                    <div class="text-500 w-6 md:w-2 font-medium">Address</div>
+                    <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 line-height-3"
+                        [class.capitalize-text]="commonFunctions.getAddress(patient) === noData">{{commonFunctions.getAddress(patient)}}</div>
+                </li>
+            </ul>
+        </div>
+        <app-navegate-to></app-navegate-to>
+    </div>
+</section>
