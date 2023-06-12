@@ -1,3 +1,13 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
-@import "/node_modules/primeflex/primeflex.css"
+@import "/node_modules/primeflex/primeflex.css";
+
+* {
+    transition: all 0.6s;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: #888;
+    margin: 0;
+}
