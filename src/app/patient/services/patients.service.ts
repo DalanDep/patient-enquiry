@@ -20,4 +20,9 @@ export class PatientsService {
     getPatients(): Observable<Patient> {
         return this.http.get<Patient>(`${this.baseUrl}/Patient`);
     }
+
+    // A patient is obtained through an id, it is possible to access directly by entering an id from the browser
+    getPatientById(id: string): Observable<Patient> { 
+        return this.http.get<Patient>(`${this.baseUrl}/Patient/${id}`);
+    }
 }
