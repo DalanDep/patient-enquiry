@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { PatientRoutingModule } from './patient-routing.module';
 import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
@@ -17,6 +17,9 @@ import { SkeletonModule } from 'primeng/skeleton';
         ListPageComponent,
         DetailPageComponent,
         PatientCardComponent
+    ],
+    providers: [
+        DatePipe
     ],
     imports: [
         CommonModule,
