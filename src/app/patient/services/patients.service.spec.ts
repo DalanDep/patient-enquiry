@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { Patient, ResourceType, Status, Mode } from '../interfaces/patient.interface';
+import { Patient, Resource, ResourceType, Status, Mode } from '../interfaces/patient.interface';
 
 import { PatientsService } from './patients.service';
 
@@ -9,7 +9,7 @@ describe('PatientsService', () => {
     let service: PatientsService;
     let httpMock: HttpTestingController;
 
-    const mockData: Patient = {
+    const mockDataPatient: Patient = {
         "resourceType": "Bundle",
         "id": "5a51f92d-28fb-423c-b498-e1a59d7d59e4",
         "meta": {
@@ -113,6 +113,57 @@ describe('PatientsService', () => {
         ]
     };
 
+    const mockDataResource: Resource = {
+        "resourceType": ResourceType.Patient,
+        "id": "592080",
+        "meta": {
+            "versionId": "1",
+            "lastUpdated": new Date("2020-01-23T09:33:58.623+00:00"),
+            "source": "#TxHlcnq3KZSdg567"
+        },
+        "text": {
+            "status": Status.Generated,
+            "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">TE <b>POTE </b></div><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>002</td></tr><tr><td>Address</td><td><span>3300 Washtenaw </span><br/><span>Ann Harbor </span><span>MI </span><span>USA </span></td></tr><tr><td>Date of birth</td><td><span>14 November 2000</span></td></tr></tbody></table></div>"
+        },
+        "identifier": [
+            {
+                "system": "http://example.org",
+                "value": "002"
+            }
+        ],
+        "name": [
+            {
+                "use": "official",
+                "family": "POTE",
+                "given": [
+                    "TE"
+                ]
+            }
+        ],
+        "telecom": [
+            {
+                "system": "phone",
+                "value": "(03) 2019 1114",
+                "use": "home"
+            }
+        ],
+        "gender": "male",
+        "birthDate": new Date("2000-11-14"),
+        "address": [
+            {
+                "use": "home",
+                "text": "3300 Washtenaw Ann Harbor, MI 48104, USA",
+                "line": [
+                    "3300 Washtenaw"
+                ],
+                "city": "Ann Harbor",
+                "state": "MI",
+                "postalCode": "48104",
+                "country": "USA"
+            }
+        ]
+    }
+
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule],
@@ -133,11 +184,22 @@ describe('PatientsService', () => {
 
     it(`should return an Observable<Patient>`, () => {
         service.getPatients().subscribe((data: Patient) => {
-            expect(data).toEqual(mockData);
+            expect(data).toEqual(mockDataPatient);
         });
 
         const req = httpMock.expectOne(`${service.getBaseUrl}/Patient`);
         expect(req.request.method).toBe('GET');
-        req.flush(mockData);
+        req.flush(mockDataPatient);
+    });
+
+    it('should return patient by id', () => {
+        const mockPatientId = '123';
+        service.getPatientById(mockPatientId).subscribe(patient => {
+            expect(patient).toEqual(mockDataResource);
+        });
+
+        const request = httpMock.expectOne(`${service.getBaseUrl}/Patient/${mockPatientId}`);
+        expect(request.request.method).toBe('GET');
+        request.flush(mockDataResource);
     });
 });
