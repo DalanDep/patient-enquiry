@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-import { Resource } from '../../interfaces/patient.interface';
 import { DatePipe } from '@angular/common';
+
 import { CommonFunctionsComponent } from 'src/app/shared/components/common-functions/common-functions.component';
+import { Resource } from '../../interfaces/patient.interface';
 
 @Component({
     selector: 'app-patient-card',

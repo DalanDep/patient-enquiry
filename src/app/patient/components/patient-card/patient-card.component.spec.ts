@@ -1,16 +1,18 @@
+import { CardModule } from 'primeng/card';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { Patient, ResourceType, Status, Mode } from '../../interfaces/patient.interface';
 
 import { DatePipe } from '@angular/common';
-import { CardModule } from 'primeng/card';
 
 import { PatientCardComponent } from './patient-card.component';
 
 describe('PatientCardComponent', () => {
     let component: PatientCardComponent;
     let fixture: ComponentFixture<PatientCardComponent>;
+
+    // it is mandatory to import datePipe because when using the cards it is needed for unit tests.
     let datePipe: DatePipe;
 
     const mockData: Patient = {

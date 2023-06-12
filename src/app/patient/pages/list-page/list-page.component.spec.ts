@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ListPageComponent } from './list-page.component';
 import { of } from 'rxjs';
 
 import { Patient, ResourceType, Status, Mode } from '../../interfaces/patient.interface';
 
 import { PatientsService } from '../../services/patients.service';
-import { ListPageComponent } from './list-page.component';
 
 describe('ListPageComponent', () => {
     let component: ListPageComponent;
